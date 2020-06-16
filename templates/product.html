@@ -8,7 +8,17 @@
             <h1>Телефон</h1>
         </div>
         <div class="content">
-
+            <h3>{{ phone.name }}</h3>
+            Стоимость: {{ phone.price }} р. <br />
+            <img alt="{{ phone.name }}" src=" {{ phone.image }} "> <br />
+            Дата начала производства: {{ phone.release_date }} <br />
+            Поддержка LTE: {% if phone.lte_exists %}Есть{% else %}Нет{% endif %} <br />
         </div>
     </div>
 {% endblock %}
+
+name = models.CharField(max_length=255, verbose_name="Модель")
+    price = models.IntegerField(verbose_name="Цена")
+    image = models.URLField(verbose_name="Изображение")
+    release_date = models.DateField(verbose_name="Дата выхода")
+    lte_exists = models.BooleanField(verbose_name="Наличие LTE")

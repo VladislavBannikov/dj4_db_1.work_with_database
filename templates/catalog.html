@@ -9,11 +9,22 @@
         </div>
 
         <div class="sort-block">
+            Сортировка: <a href="./?sort=name">По названию</a>
+            <a href="./?sort=min_price">Начиная с Дешевых</a>
+            <a href="./?sort=max_price">Начиная с дорогих</a>
             {# Здесь должен быть раздел с сортировкой #}
         </div>
 
         <div class="content">
-            {# Здесь должен отображаться каталог с телефонами #}
+            {% for p in phones  %}
+{#                <th scope="row">{% cycle 1 2 %}</th>#}
+{#                в две колонки что-то не сообразил, надо наверное bootstrap использовать#}
+                <h3><a href="{{ p.slug }}" >{{ p.name }}</a></h3>
+                Стоимость: {{ p.price }} р. <br />
+                <img alt="{{ p.name }}" src=" {{ p.image }} "> <br />
+
+
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
